@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于",
+    "projects": "项目",
+    "blog": "博客"
+  },
+  "hero": {
+    "title": "Joeyzone",
+    "subtitle1": "Web3 开发者",
+    "subtitle2": "Solidity 智能合约工程师",
+    "description": "专注区块链技术，智能合约开发，DeFi 协议实现。致力于构建安全、可靠的 Web3 应用。",
+    "cta": "了解更多",
+    "viewBlog": "阅读博客"
+  },
+  "about": {
+    "title": "关于我",
+    "subtitle": "开发者 & 建造者",
+    "description": "我是一名 Web3 开发者，专注于智能合约开发和区块链技术。在 Solidity、Polkadot/Substrate 生态有丰富经验，同时也是 WTF Solidity 项目的贡献者。",
+    "experience": "工作经历",
+    "education": "教育背景",
+    "skills": "技术栈"
+  },
+  "projects": {
+    "title": "项目展示",
+    "subtitle": "区块链项目与技术实践"
+  },
+  "blog": {
+    "title": "博客",
+    "subtitle": "技术文章与思考"
+  },
+  "contact": {
+    "title": "联系方式",
+    "subtitle": "通过以下方式联系我"
+  },
+  "footer": {
+    "builtWith": "基于 Next.js & Vercel 构建"
+  },
+  "work": {
+    "deepsafe": {
+      "title": "Bool Network & DeepSafe",
+      "role": "智能合约工程师",
+      "period": "2024.03 - 至今",
+      "description": "负责跨链桥项目搭建，Polkadot 公链模块开发，MakerDAO、Aero、DEX 等协议开发"
+    },
+    "web3nomad": {
+      "title": "web3游民",
+      "role": "智能合约开发",
+      "period": "2023.07 - 2024.02",
+      "description": "CDU 项目全栈开发，Setllaris Inscription 合约"
+    },
+    "bitmart": {
+      "title": "Bitmart",
+      "role": "前端负责人",
+      "period": "2018.02 - 2023.06",
+      "description": "交易所前端从 0 到 1 搭建，整体架构及安全"
+    }
+  },
+  "education": {
+    "zju": {
+      "title": "浙江大学",
+      "degree": "硕士",
+      "major": "软件工程",
+      "period": "2010 - 2012"
+    },
+    "neu": {
+      "title": "东北大学",
+      "degree": "本科",
+      "major": "软件工程",
+      "period": "2006 - 2010"
+    }
+  }
+}

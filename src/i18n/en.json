@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "blog": "Blog"
+  },
+  "hero": {
+    "title": "Joeyzone",
+    "subtitle1": "Web3 Developer",
+    "subtitle2": "Solidity Smart Contract Engineer",
+    "description": "Focused on blockchain technology, smart contract development, and DeFi protocols. Building secure and reliable Web3 applications.",
+    "cta": "Learn More",
+    "viewBlog": "View Blog"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "Developer & Builder",
+    "description": "I'm a Web3 developer specializing in smart contract development and blockchain technology. Extensive experience in Solidity and Polkadot/Substrate ecosystem. Contributor to WTF Solidity project.",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Tech Stack"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Blockchain Projects & Technical Practice"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Technical Articles & Insights"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch"
+  },
+  "footer": {
+    "builtWith": "Built with Next.js & Vercel"
+  },
+  "work": {
+    "deepsafe": {
+      "title": "Bool Network & DeepSafe",
+      "role": "Smart Contract Engineer",
+      "period": "2024.03 - Present",
+      "description": "Cross-chain bridge development, Polkadot parachain modules, MakerDAO, Aero, DEX protocols"
+    },
+    "web3nomad": {
+      "title": "Web3 Nomad",
+      "role": "Smart Contract Developer",
+      "period": "2023.07 - 2024.02",
+      "description": "CDU full-stack development, Setllaris Inscription contracts"
+    },
+    "bitmart": {
+      "title": "Bitmart",
+      "role": "Frontend Lead",
+      "period": "2018.02 - 2023.06",
+      "description": "Exchange frontend from scratch, architecture and security"
+    }
+  },
+  "education": {
+    "zju": {
+      "title": "Zhejiang University",
+      "degree": "Master",
+      "major": "Software Engineering",
+      "period": "2010 - 2012"
+    },
+    "neu": {
+      "title": "Northeastern University",
+      "degree": "Bachelor",
+      "major": "Software Engineering",
+      "period": "2006 - 2010"
+    }
+  }
+}
