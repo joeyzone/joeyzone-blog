@@ -37,11 +37,20 @@ const projects = [
         highlight: false,
     },
     {
-        title: "DAO",
+        title: "Exploring DAO Governance",
         description:
             "Responsible for the deployment, implementation, and maintenance of DAO governance smart contracts, enabling the on-chain execution of governance mechanisms.",
-        tech: ["Solidity", "MakeDAO", "Token"],
+        tech: ["Solidity", "MakerDAO", "Token"],
         highlight: false,
+    },
+];
+
+const blogPosts = [
+    {
+        title: "Exploring DAO Governance",
+        excerpt: "Deep dive into MakerDAO governance: voting process, smart contracts and execution mechanism",
+        date: "2024",
+        tags: ["DeFi", "DAO", "MakerDAO"],
     },
 ];
 
@@ -172,9 +181,9 @@ export default function Home() {
 
                         <AnimatedSection delay={0.1}>
                             <div className="grid md:grid-cols-2 gap-6">
-                                {[1, 2].map((i) => (
+                                {blogPosts.map((post) => (
                                     <article
-                                        key={i}
+                                        key={post.title}
                                         className="group p-6 rounded-2xl border border-card-border bg-card-bg hover:border-accent/50 transition-all duration-300 card-hover"
                                     >
                                         <div className="flex items-center gap-3 mb-4">
@@ -182,19 +191,25 @@ export default function Home() {
                                                 Article
                                             </span>
                                             <span className="text-xs text-foreground/40">
-                                                {i === 1 ? "2024" : "2023"}
+                                                {post.date}
                                             </span>
                                         </div>
                                         <h3 className="text-lg font-semibold mb-2 group-hover:text-accent transition-colors">
-                                            {i === 1
-                                                ? "Understanding Cross-chain Bridge Security"
-                                                : "Building a DAO from Scratch"}
+                                            {post.title}
                                         </h3>
                                         <p className="text-foreground/60 text-sm mb-4 line-clamp-2">
-                                            {i === 1
-                                                ? "A deep dive into the security considerations and architectural patterns of cross-chain bridges..."
-                                                : "Step-by-step guide to implementing a decentralized autonomous organization with voting mechanisms..."}
+                                            {post.excerpt}
                                         </p>
+                                        <div className="flex flex-wrap gap-2 mb-4">
+                                            {post.tags.map((tag) => (
+                                                <span
+                                                    key={tag}
+                                                    className="px-2 py-1 text-xs font-mono text-foreground/40 bg-foreground/5 rounded"
+                                                >
+                                                    {tag}
+                                                </span>
+                                            ))}
+                                        </div>
                                         <Link
                                             href="/blog"
                                             className="text-sm text-accent hover:underline flex items-center gap-1"

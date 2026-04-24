@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --background: #0a0a0f;
@@ -22,10 +23,6 @@
   --font-mono: var(--font-mono);
 }
 
-* {
-  cursor: none;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -42,17 +39,74 @@ body {
   color: white;
 }
 
+/* Remove selection styling in code blocks */
+pre ::selection,
+pre code ::selection,
+pre *::selection {
+  background: transparent !important;
+}
+
+code::-moz-selection,
+code ::selection {
+  background: rgba(139, 92, 246, 0.3);
+}
+
+/* Syntax highlighter selection fix */
+.syntax-highlighter code,
+.syntax-highlighter span,
+pre *, pre {
+  background: transparent !important;
+}
+
+[data-language] {
+  background: #1e1e1e;
+}
+
+/* Force reset selection in pre blocks */
+pre {
+  background: #1e1e1e;
+}
+
+pre * {
+  background: transparent !important;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent);
+  background: rgba(139, 92, 246, 0.3);
   border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.5);
+}
+
+/* Code block scrollbar */
+pre code + pre::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+pre::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+pre::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .mouse-follower {
