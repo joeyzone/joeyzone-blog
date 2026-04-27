@@ -518,3 +518,35 @@ pre * {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+/* Katex / LaTeX formula styling */
+.katex-display {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(168, 85, 247, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  overflow-x: auto;
+}
+
+.katex {
+  font-size: 1.1em;
+  color: #fafafa;
+}
+
+.katex .mord {
+  color: #a855f7;
+}
+
+.katex .mbin {
+  color: #06b6d4;
+}
+
+.katex .mrel {
+  color: #3b82f6;
+}
+
+.katex .mopen,
+.katex .mclose {
+  color: #10b981;
+}

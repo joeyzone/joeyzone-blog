@@ -7,9 +7,12 @@ import Link from "next/link";
 import { ArrowLeft, Copy, Check, Calendar, Clock, Tag } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { motion } from "framer-motion";
+import "katex/dist/katex.min.css";
 
 const posts: Record<number, {
   title: string;
@@ -24,6 +27,27 @@ const posts: Record<number, {
     readTime: "8 min read",
     tags: ["DeFi", "DAO", "MakerDAO"],
     slug: "makerdao",
+  },
+  2: {
+    title: "Uniswap V2 Math Formulas and Core Mechanisms",
+    date: "2024",
+    readTime: "12 min read",
+    tags: ["DeFi", "AMM", "Uniswap"],
+    slug: "uniswapv2",
+  },
+  3: {
+    title: "Uniswap V3 Math Formulas and Core Mechanisms",
+    date: "2024",
+    readTime: "15 min read",
+    tags: ["DeFi", "AMM", "Uniswap"],
+    slug: "uniswapv3",
+  },
+  4: {
+    title: "Aave Interest Rate Model",
+    date: "2024",
+    readTime: "10 min read",
+    tags: ["DeFi", "Lending", "Aave"],
+    slug: "aave",
   },
 };
 
@@ -173,7 +197,8 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
                 transition={{ delay: 0.3 }}
               >
                 <ReactMarkdown
-                  remarkPlugins={[remarkGfm]}
+                  remarkPlugins={[remarkGfm, remarkMath]}
+                  rehypePlugins={[rehypeKatex]}
                   components={{
                     img: ({ src, alt }) => (
                       <motion.img

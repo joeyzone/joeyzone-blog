@@ -63,22 +63,25 @@ const projects = [
 
 const notes = [
   {
-    title: "Understanding EVM Opcodes",
-    excerpt: "Deep dive into Ethereum Virtual Machine opcodes and gas optimization techniques",
+    title: "Uniswap V2 Core Formulas",
+    excerpt: "AMM constant product, slippage, fees, LP shares, price oracle and impermanent loss",
     date: "2024",
-    tags: ["EVM", "Gas"],
+    tags: ["DeFi", "AMM"],
+    slug: "uniswapv2",
   },
   {
-    title: "Cross-chain Messaging Protocols",
-    excerpt: "Comparing IBC, LayerZero, and Wormhole for decentralized messaging",
+    title: "Uniswap V3 Core Mechanisms",
+    excerpt: "Concentrated liquidity, price range, tick, sqrtPriceX96, swap calculation and LP position value",
     date: "2024",
-    tags: ["Cross-chain", "Protocols"],
+    tags: ["DeFi", "AMM"],
+    slug: "uniswapv3",
   },
   {
-    title: "Substrate Runtime Development",
-    excerpt: "Building custom pallets for Polkadot parachains using FRAME",
+    title: "Aave Interest Rate Model",
+    excerpt: "Borrow rate, supply rate, utilization ratio, reserve factor and index accumulator mechanism",
     date: "2024",
-    tags: ["Substrate", "Polkadot"],
+    tags: ["DeFi", "Lending"],
+    slug: "aave",
   },
 ];
 
@@ -322,31 +325,33 @@ export default function Home() {
               <div className="flex flex-col gap-4">
                 {notes.map((note, idx) => (
                   <AnimatedSection key={note.title} delay={0.2 + idx * 0.1}>
-                    <motion.article
-                      className="note-card flex items-start gap-4 group cursor-pointer"
-                      whileHover={{ x: 4 }}
-                      transition={{ type: "spring", stiffness: 400 }}
-                    >
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
-                          <h4 className="text-sm font-semibold group-hover:text-[#a855f7] transition-colors">
-                            {note.title}
-                          </h4>
-                          <span className="text-xs text-foreground/30">•</span>
-                          <span className="text-xs text-foreground/40 font-mono">{note.date}</span>
+                    <Link href={note.slug ? `/blog/${note.slug}` : "/blog"}>
+                      <motion.article
+                        className="note-card flex items-start gap-4 group cursor-pointer"
+                        whileHover={{ x: 4 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <h4 className="text-sm font-semibold group-hover:text-[#a855f7] transition-colors">
+                              {note.title}
+                            </h4>
+                            <span className="text-xs text-foreground/30">•</span>
+                            <span className="text-xs text-foreground/40 font-mono">{note.date}</span>
+                          </div>
+                          <p className="text-xs text-foreground/50 mb-2 line-clamp-1">
+                            {note.excerpt}
+                          </p>
+                          <div className="flex gap-1.5">
+                            {note.tags.map((tag) => (
+                              <span key={tag} className="px-1.5 py-0.5 text-[10px] bg-white/5 rounded text-foreground/40">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                        <p className="text-xs text-foreground/50 mb-2 line-clamp-1">
-                          {note.excerpt}
-                        </p>
-                        <div className="flex gap-1.5">
-                          {note.tags.map((tag) => (
-                            <span key={tag} className="px-1.5 py-0.5 text-[10px] bg-white/5 rounded text-foreground/40">
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </motion.article>
+                      </motion.article>
+                    </Link>
                   </AnimatedSection>
                 ))}
 

@@ -14,6 +14,7 @@ const posts: Array<{
   date: string;
   readTime: string;
   tags: string[];
+  slug: string;
 }> = [
   {
     id: 1,
@@ -22,6 +23,34 @@ const posts: Array<{
     date: "2024",
     readTime: "8 min read",
     tags: ["DeFi", "DAO", "MakerDAO"],
+    slug: "makerdao",
+  },
+  {
+    id: 2,
+    title: "Uniswap V2 Math Formulas and Core Mechanisms",
+    excerpt: "Math formulas and derivations for AMM, slippage, fees, LP shares, price oracle and impermanent loss",
+    date: "2024",
+    readTime: "12 min read",
+    tags: ["DeFi", "AMM", "Uniswap"],
+    slug: "uniswapv2",
+  },
+  {
+    id: 3,
+    title: "Uniswap V3 Math Formulas and Core Mechanisms",
+    excerpt: "Concentrated liquidity, price range, tick, sqrtPriceX96, swap calculation, LP position value and fees",
+    date: "2024",
+    readTime: "15 min read",
+    tags: ["DeFi", "AMM", "Uniswap"],
+    slug: "uniswapv3",
+  },
+  {
+    id: 4,
+    title: "Aave Interest Rate Model",
+    excerpt: "Borrow rate, supply rate, utilization ratio, reserve factor and index accumulator mechanism",
+    date: "2024",
+    readTime: "10 min read",
+    tags: ["DeFi", "Lending", "Aave"],
+    slug: "aave",
   },
 ];
 
