@@ -1,10 +1,10 @@
 "use client";
 
 import Navigation from "@/components/Navigation";
-import MouseFollower from "@/components/MouseFollower";
 import AnimatedSection from "@/components/AnimatedSection";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 import { useLanguage } from "@/i18n/context";
 
 const posts: Array<{
@@ -31,58 +31,71 @@ export default function BlogPage() {
 
   return (
     <>
-      <MouseFollower />
       <Navigation />
 
-      <main className="flex-1 pt-24 pb-20 px-6">
+      <main className="flex-1 pt-32 pb-20 px-6">
         <div className="max-w-4xl mx-auto">
           <AnimatedSection>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="gradient-text">/</span> {t.blog.title}
-            </h1>
-            <p className="text-foreground/60 text-lg">
-              {t.blog.subtitle}
-            </p>
+            <motion.div className="mb-16">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-sm font-mono text-purple-400">Blog</span>
+                <span className="text-foreground/20">/</span>
+                <span className="text-sm font-mono text-foreground/40">Posts</span>
+              </div>
+              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+                <span className="gradient-text">/</span> {t.blog.title}
+              </h1>
+              <p className="text-lg text-foreground/50">
+                {t.blog.subtitle}
+              </p>
+            </motion.div>
           </AnimatedSection>
 
-          <div className="mt-12 space-y-6">
+          <div className="space-y-8">
             {posts.map((post, idx) => (
               <AnimatedSection key={post.id} delay={idx * 0.05}>
-                <Link href={`/blog/${post.id}`} className="block">
-                  <article className="group p-6 rounded-xl border border-card-border bg-card-bg hover:border-purple-500/50 transition-all duration-300 gradient-border">
-                    <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center gap-3 mb-3">
-                          <span className="text-xs font-mono text-purple-400">
-                            {post.date}
-                          </span>
-                          <span className="text-xs text-foreground/30">•</span>
-                          <span className="text-xs text-foreground/40">
-                            {post.readTime}
-                          </span>
-                        </div>
-                        <h2 className="text-xl font-semibold mb-2 group-hover:text-accent transition-colors">
-                          {post.title}
-                        </h2>
-                        <p className="text-foreground/60 text-sm leading-relaxed mb-4">
-                          {post.excerpt}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {post.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-2 py-1 text-xs font-mono text-foreground/40 bg-foreground/5 rounded"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <span className="shrink-0 flex items-center gap-1 text-sm text-accent opacity-0 group-hover:opacity-100 transition-opacity">
-                        Read <ArrowRight size={14} />
-                      </span>
+                <Link href={`/blog/${post.id}`} className="block group">
+                  <motion.article
+                    className="p-8 md:p-10 rounded-3xl glass border border-white/5 hover:border-purple-500/30 transition-all duration-500 card-hover"
+                    whileHover={{ y: -5 }}
+                  >
+                    <div className="flex items-center gap-4 mb-6">
+                      {post.tags.map((tag) => (
+                        <span key={tag} className="tag">
+                          {tag}
+                        </span>
+                      ))}
                     </div>
-                  </article>
+
+                    <h2 className="text-2xl md:text-3xl font-bold mb-4 group-hover:text-purple-400 transition-colors">
+                      {post.title}
+                    </h2>
+
+                    <p className="text-foreground/50 mb-6 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="flex items-center gap-6 text-sm text-foreground/40">
+                      <div className="flex items-center gap-2">
+                        <Calendar size={14} />
+                        <span>{post.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock size={14} />
+                        <span>{post.readTime}</span>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 flex items-center gap-2 text-purple-400 group/link">
+                      <span className="text-sm font-medium">Read article</span>
+                      <motion.span
+                        whileHover={{ x: 5 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                      >
+                        <ArrowRight size={16} />
+                      </motion.span>
+                    </div>
+                  </motion.article>
                 </Link>
               </AnimatedSection>
             ))}
