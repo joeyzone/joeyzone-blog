@@ -94,7 +94,7 @@ export default function Home() {
         <Hero />
 
         {/* About Section */}
-        <section id="about" className="py-24 px-6 relative">
+        <section id="about" className="py-20 px-6 relative">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#a855f7]/5 to-transparent" />
 
           <div className="max-w-6xl mx-auto relative">
@@ -106,12 +106,12 @@ export default function Home() {
             </AnimatedSection>
 
             {/* Stats cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
               {[
-                { value: "3+", label: "Years Exp." },
+                { value: "3+", label: "Years" },
                 { value: "8+", label: "Projects" },
                 { value: "50+", label: "Contracts" },
-                { value: "∞", label: "Security" },
+                { value: "∞", label: "Security Mindset" },
               ].map((stat, idx) => (
                 <motion.div
                   key={stat.label}
@@ -120,8 +120,8 @@ export default function Home() {
                   transition={{ delay: 0.1 + idx * 0.1 }}
                   className="p-5 rounded-xl glass border border-[#a855f7]/20 bg-gradient-to-br from-[#a855f7]/5 to-transparent"
                 >
-                  <div className="text-2xl md:text-3xl font-bold gradient-text mb-1">{stat.value}</div>
-                  <div className="text-xs font-mono text-foreground/50 uppercase tracking-wider">{stat.label}</div>
+                  <div className="text-2xl md:text-3xl font-bold gradient-text mb-2">{stat.value}</div>
+                  <div className="text-sm font-mono text-foreground/60">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -175,7 +175,7 @@ export default function Home() {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="py-24 px-6 relative bg-gradient-to-b from-transparent via-[#3b82f6]/3 to-transparent">
+        <section id="projects" className="py-20 px-6 relative bg-gradient-to-b from-transparent via-[#3b82f6]/3 to-transparent">
           <div className="max-w-6xl mx-auto">
             <AnimatedSection>
               <motion.div className="flex items-center gap-4 mb-8">
@@ -220,10 +220,10 @@ export default function Home() {
                         <span className="text-foreground/60">stack:</span>{" "}
                         <span className="text-foreground/50">{project.stack}</span>
                       </div>
-                      <div className="text-[#06b6d4]/70">
+                      <div>
                         <span className="text-foreground/40">{"// "}</span>
                         <span className="text-foreground/60">status:</span>{" "}
-                        <span className="text-[#10b981]">deployed</span>
+                        <span className="text-[#10b981] font-semibold">deployed</span>
                       </div>
                     </div>
 
@@ -249,7 +249,7 @@ export default function Home() {
         </section>
 
         {/* Blog Section */}
-        <section id="blog-preview" className="py-24 px-6 relative">
+        <section id="blog-preview" className="py-20 px-6 relative">
           <div className="max-w-6xl mx-auto">
             <AnimatedSection>
               <motion.div className="flex items-center gap-4 mb-8">
@@ -281,8 +281,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-4 group-hover:text-[#a855f7] transition-colors">
-                    Exploring DAO Governance
+                  <h3 className="text-xl font-bold mb-4 group-hover:text-[#a855f7] transition-colors">
+                    MakerDAO Governance: From Voting to Spell Execution
                   </h3>
 
                   <p className="text-foreground/50 mb-6 leading-relaxed flex-1">

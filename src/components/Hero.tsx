@@ -127,35 +127,36 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen min-h-[760px] flex items-center overflow-hidden">
-      {/* Background image - right side */}
+    <section className="relative h-screen min-h-[760px] flex items-center overflow-hidden pt-24">
+      {/* Background image - right side, brighter */}
       <div
-        className="absolute right-0 top-0 w-1/2 h-full bg-cover bg-center z-0 opacity-40"
+        className="absolute right-0 top-0 w-1/2 h-full bg-cover bg-center z-0"
         style={{
           backgroundImage: `url('/jzimg.png')`,
+          opacity: 0.7,
+          filter: "brightness(1.1)",
         }}
       />
 
       {/* Deep mask for left side */}
       <div className="absolute inset-0 z-10 pointer-events-none" style={{
-        background: `linear-gradient(to right, rgba(9, 9, 11, 0.95) 0%, rgba(9, 9, 11, 0.8) 50%, rgba(9, 9, 11, 0.4) 100%)`
+        background: `linear-gradient(to right, rgba(9, 9, 11, 0.98) 0%, rgba(9, 9, 11, 0.85) 55%, rgba(9, 9, 11, 0.5) 100%)`
       }} />
 
       {/* Matrix code rain on edges */}
       <MatrixCodeRain />
 
-      {/* Purple/Blue decorative orbs */}
-      <CyberOrb className="orb-purple w-[500px] h-[500px] top-[-150px] left-[-150px] opacity-20" delay={0} />
-      <CyberOrb className="orb-blue w-[400px] h-[400px] bottom-[10%] right-[-100px] opacity-15" delay={2} />
+      {/* Only right side orb, subtle */}
+      <CyberOrb className="orb-purple w-[250px] h-[250px] top-[15%] right-[8%] opacity-8" delay={0} />
 
-      {/* Content - left aligned */}
-      <div className="relative z-30 text-left px-6 md:px-12 max-w-3xl">
-        {/* Status badge */}
+      {/* Content - aligned with other sections: max-w-[1180px] mx-auto px-6 */}
+      <div className="relative z-30 text-left max-w-[1180px] mx-auto px-6 w-full">
+        {/* Status badge - above title, left aligned */}
         <motion.div
           initial={{ scale: 0, opacity: 0, y: 20 }}
           animate={{ scale: 1, opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.6, ease: "backOut" }}
-          className="mb-10"
+          className="mb-6"
         >
           <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass border border-[#a855f7]/20 backdrop-blur-xl">
             <motion.span
@@ -300,10 +301,10 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator - left aligned */}
       <motion.button
         onClick={scrollToAbout}
-        className="absolute bottom-10 left-12 flex flex-col items-center gap-2 z-30"
+        className="absolute bottom-10 left-6 flex flex-col items-center gap-2 z-30"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5 }}
