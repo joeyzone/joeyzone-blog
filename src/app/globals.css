@@ -550,3 +550,15 @@ pre * {
 .katex .mclose {
   color: #10b981;
 }
+
+/* Remove backticks from code elements added by Tailwind Typography plugin */
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::before,
+.prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *))::after {
+  content: "" !important;
+}
+
+/* Also target pre code specifically */
+.prose pre code::before,
+.prose pre code::after {
+  content: "" !important;
+}

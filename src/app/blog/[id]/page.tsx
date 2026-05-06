@@ -56,8 +56,16 @@ function extractCodeFromChildren(children: React.ReactNode): string {
   if (Array.isArray(children)) {
     return children.map(extractCodeFromChildren).join("");
   }
-  if (children && typeof children === "object" && "props" in children) {
-    return extractCodeFromChildren((children as any).props?.children);
+  if (children && typeof children === "object") {
+    // Handle react-markdown v9 node structure
+    const node = children as { props?: { children?: React.ReactNode }; value?: string };
+    if (node.props?.children) {
+      return extractCodeFromChildren(node.props.children);
+    }
+    if (typeof node.value === "string") {
+      return node.value;
+    }
+    return "";
   }
   return "";
 }
@@ -226,6 +234,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
                     ),
                     pre: ({ children }) => {
                       const code = extractCodeFromChildren(children);
+                      const cleanCode = typeof code === 'string' ? code.trim() : code;
                       return (
                         <motion.div
                           className="code-block my-8 rounded-2xl overflow-hidden"
@@ -233,7 +242,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
                         >
-                          {code && <CopyButton code={code} />}
+                          {cleanCode && <CopyButton code={cleanCode} />}
                           {children}
                         </motion.div>
                       );
@@ -241,12 +250,22 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
                     code: ({ className, children, ...props }) => {
                       const match = /language-(\w+)/.exec(className || "");
                       const isInline = !match;
+
+                      // Extract string content from children (handles react-markdown v9 node structure)
+                      const getStringContent = (node: React.ReactNode): string => {
+                        if (typeof node === "string") return node;
+                        if (Array.isArray(node)) return node.map(getStringContent).join("");
+                        if (node && typeof node === "object" && "props" in node) {
+                          return getStringContent((node as any).props?.children);
+                        }
+                        return String(node);
+                      };
+
+                      const codeString = getStringContent(children).replace(/^[\u2018\u2019\u201a\u201b\u0027']+/, '').trim();
+
                       if (isInline) {
                         return (
-                          <code
-                            className="text-purple-400 bg-purple-500/10 px-2 py-1 rounded-lg font-mono text-sm"
-                            {...props}
-                          >
+                          <code className="text-purple-400 bg-purple-500/10 px-2 py-1 rounded-lg font-mono text-sm">
                             {children}
                           </code>
                         );
@@ -270,7 +289,7 @@ export default function BlogPostPage({ params }: { params: Promise<{ id: string 
                             },
                           }}
                         >
-                          {String(children).replace(/\n$/, "")}
+                          {codeString.replace(/\n$/, "")}
                         </SyntaxHighlighter>
                       );
                     },
